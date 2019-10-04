@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 
-
 def user_photo_directory_path(object, filename):
     filename = 'logo.{0}'.format(filename.split('.')[-1]) if '.' in filename else 'logo'
 
@@ -14,7 +13,6 @@ class User(AbstractUser):
                                 unique=True, null=False)
     uuid = models.UUIDField('Unique UserID', unique=True, default=uuid.uuid4,
                              editable=False)
-
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
